@@ -1,0 +1,17 @@
+{
+  "name": "pixi-practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "rm -rf .cache && parcel src/index.html --out-dir app/"
+  },
+  "dependencies": {
+    "images": "^3.0.1",
+    "pixi.js": "^4.8.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0"
+  }
+}
