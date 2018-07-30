@@ -681,6 +681,10 @@ eventemitter3@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-2.0.3.tgz#b5e1079b59fb5e1ba2771c0a993be060a58c99ba"
 
+eventemitter3@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.0.tgz#090b4d6cdbd645ed10bf750d4b5407942d7ba163"
+
 extend@~3.0.0, extend@~3.0.1:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
@@ -967,6 +971,10 @@ loose-envify@^1.0.0:
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
+
+memoizejs@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/memoizejs/-/memoizejs-0.1.1.tgz#7e2c6a18c7799cad501ecd2025637843060ad495"
 
 mime-db@~1.35.0:
   version "1.35.0"

@@ -7,15 +7,72 @@
   <title>PixiJS</title>
 
   <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+
+      overflow: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .game-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+    }
+
     canvas {
+      width: 216px;
+      height: 384px;
+
       border: 1px solid black;
       background: url('images/bg.jpg') no-repeat top center;
       background-size: cover;
     }
+
+    @media (min-width: 350px) {
+      canvas {
+        width: 261px;
+        height: 464px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      canvas {
+        width: 504px;
+        height: 896px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      canvas {
+        width: 342px;
+        height: 608px;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      canvas {
+        width: 504px;
+        height: 896px;
+      }
+    }
+
+
+
+
   </style>
 </head>
 <body>
+  <div class="game-wrap"></div>
   
-  <script src="/src.fd9ca426.js"></script>
+  <script src="/src.64efa690.js"></script>
 </body>
 </html>

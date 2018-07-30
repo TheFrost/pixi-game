@@ -7,7 +7,9 @@
     "start": "rm -rf .cache && parcel src/index.html --out-dir app/"
   },
   "dependencies": {
+    "eventemitter3": "^3.1.0",
     "images": "^3.0.1",
+    "memoizejs": "^0.1.1",
     "pixi.js": "^4.8.1"
   },
   "devDependencies": {
