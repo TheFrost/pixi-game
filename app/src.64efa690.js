@@ -42091,7 +42091,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var getPixelCounter = exports.getPixelCounter = (0, _memoizejs2.default)(function (pixels, callback) {
   var counter = 0;
 
-  for (var i = 256320; i < 335120; i += 4) {
+  for (var i = 0; i < pixels.length; i += 4) {
     var pixel = {
       r: pixels[i],
       g: pixels[i + 1],
@@ -42177,6 +42177,7 @@ var PlayerContainer = function () {
           width = _app$screen.width,
           height = _app$screen.height;
 
+      console.log(width, height);
       var shape = new PIXI.Sprite(this.resources['images/shape.png'].texture);
       shape.width = 295;
       shape.height = 284;
@@ -42321,7 +42322,7 @@ var App = function (_EventEmitter) {
 
     _this.appConfig = {
       width: _this.GAME_WIDTH,
-      height: _this.GAME_WIDTH,
+      height: _this.GAME_HEIGHT,
       antialias: true,
       transparent: true,
       roundPixels: true,
@@ -42363,6 +42364,12 @@ var App = function (_EventEmitter) {
   }, {
     key: 'resize',
     value: function resize() {
+      var _app = this.app,
+          stage = _app.stage,
+          renderer = _app.renderer,
+          view = _app.view;
+
+
       var scale = Math.min(window.innerWidth / this.GAME_WIDTH, window.innerHeight / this.GAME_HEIGHT);
 
       var width = Math.ceil(this.GAME_WIDTH * scale);
@@ -42370,9 +42377,9 @@ var App = function (_EventEmitter) {
 
       var styles = { width: width + 'px', height: height + 'px' };
 
-      Object.assign(this.app.view.style, styles);
-      this.app.renderer.resize(width, height);
-      this.app.stage.scale.set(scale);
+      Object.assign(view.style, styles);
+      renderer.resize(width, height);
+      stage.scale.set(scale);
     }
   }, {
     key: 'setup',

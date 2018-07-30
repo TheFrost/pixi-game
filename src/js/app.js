@@ -13,7 +13,7 @@ export default class App extends EventEmitter {
 
     this.appConfig = {
       width: this.GAME_WIDTH,
-      height: this.GAME_WIDTH,
+      height: this.GAME_HEIGHT,
       antialias: true,
       transparent: true,
       roundPixels: true,
@@ -48,6 +48,8 @@ export default class App extends EventEmitter {
   }
 
   resize() {
+    const { stage, renderer, view } = this.app;
+
     const scale = Math.min(
       window.innerWidth / this.GAME_WIDTH,
       window.innerHeight / this.GAME_HEIGHT
@@ -58,9 +60,9 @@ export default class App extends EventEmitter {
 
     const styles = { width: `${width}px`, height: `${height}px` };
 
-    Object.assign(this.app.view.style, styles);
-    this.app.renderer.resize(width, height);
-    this.app.stage.scale.set(scale);
+    Object.assign(view.style, styles);
+    renderer.resize(width, height);
+    stage.scale.set(scale);
   }
 
   setup(loader, resources) {

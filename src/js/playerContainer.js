@@ -25,6 +25,7 @@ export default class PlayerContainer {
 
   drawShape() {
     const { width, height } = this.app.screen;
+    console.log(width, height);
     const shape = new PIXI.Sprite(this.resources['images/shape.png'].texture);
     shape.width = 295;
     shape.height = 284;

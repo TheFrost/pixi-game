@@ -3,7 +3,7 @@ import Memoize from 'memoizejs';
 export const getPixelCounter = Memoize((pixels, callback) => {
   let counter = 0;
 
-  for (let i = 256320; i < 335120; i+=4) {
+  for (let i = 0; i < pixels.length; i+=4) {
     const pixel = {
       r: pixels[i],
       g: pixels[i+1],
