@@ -14,8 +14,9 @@ export default class App extends EventEmitter {
     this.appConfig = {
       width: this.GAME_WIDTH,
       height: this.GAME_HEIGHT,
-      antialias: true,
-      transparent: true,
+      // antialias: true,
+      // transparent: true,
+      legacy: true,
       roundPixels: true,
       resolution: window.devicePixelRatio || 1
     };
@@ -53,7 +54,9 @@ export default class App extends EventEmitter {
     const scale = Math.min(
       window.innerWidth / this.GAME_WIDTH,
       window.innerHeight / this.GAME_HEIGHT
-    );
+		);
+		
+		console.log(scale);
 
     const width = Math.ceil(this.GAME_WIDTH * scale);
     const height = Math.ceil(this.GAME_HEIGHT * scale);

@@ -3,16 +3,24 @@ import { getPixelCounter, getPercent } from './utils';
 
 export default class PlayerContainer {
   constructor(appContext, resources) {
-    this.container = new PIXI.Container();
+    
     this.app = appContext;
     this.stage = this.app.stage;
     this.renderer = this.app.renderer;
     this.resources = resources;
     this.extract = this.app.renderer.plugins.extract;
     this.totalBasePixels = 0;
-
+    
     this.isDragging = false;
-
+    
+    // set up container
+    this.container = new PIXI.Container();
+    this.container.pivot.x = 295/2;
+    this.container.pivot.y = 284/2;
+    this.container.position.x = this.app.screen.width/2;
+    this.container.position.y = this.app.screen.height/2;
+    console.log(this.container);
+    
     this.init();
   }
 
@@ -26,16 +34,16 @@ export default class PlayerContainer {
   drawShape() {
     const { width, height } = this.app.screen;
     console.log(width, height);
-    const shape = new PIXI.Sprite(this.resources['images/shape.png'].texture);
-    shape.width = 295;
-    shape.height = 284;
-    shape.anchor.x = 0.5;
-    shape.anchor.y = 0.5;
-    shape.position.set(
-      width/2,
-      height/2
-    );
-    this.container.addChild(shape);
+    this.shape = new PIXI.Sprite(this.resources['images/shape.png'].texture);
+    this.shape.width = 295;
+    this.shape.height = 284;
+    // this.shape.anchor.x = 0.5;
+    // this.shape.anchor.y = 0.5;
+    // this.shape.position.set(
+    //   width/2,
+    //   height/2
+    // );
+    this.container.addChild(this.shape);
   }
 
   setupBasePixels() {
@@ -51,13 +59,13 @@ export default class PlayerContainer {
     this.brush.drawCircle(0, 0, 5);
     this.brush.endFill();
 
-    this.cheeseTexture = PIXI.RenderTexture.create(width, height);
+    this.cheeseTexture = PIXI.RenderTexture.create(this.shape.width, this.shape.height);
     const cheeseTextureSprite = new PIXI.Sprite(this.cheeseTexture);
     this.container.addChild(cheeseTextureSprite);
     
     const cheeseAsset = new PIXI.Sprite.fromImage('images/chesse-back.png');
-    cheeseAsset.width = width;
-    cheeseAsset.height = height;
+    cheeseAsset.width = this.shape.width;
+    cheeseAsset.height = this.shape.height;
     cheeseAsset.mask = cheeseTextureSprite;
     this.container.addChild(cheeseAsset);
   }
@@ -70,6 +78,7 @@ export default class PlayerContainer {
 
   getTotalBasePixels() {
     const pixels = this.extract.pixels(this.container);
+    console.log(pixels);
     return getPixelCounter(pixels, pixel => (pixel.r+pixel.g+pixel.b) === 0 && pixel.a === 255);
   }
 
@@ -101,7 +110,7 @@ export default class PlayerContainer {
   
   pointerMove(event) {
     if (this.isDragging) {
-      this.brush.position.copy(event.data.global);
+      this.brush.position.copy(event.data.getLocalPosition(this.container));
     }
   }
 }
